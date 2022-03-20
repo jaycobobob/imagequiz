@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class RegistrationForm extends Component {
-  state = { badLogin: false, goodLogin: false, errorMsg: "" };
+  state = { badLogin: false, goodLogin: false, errorMsg: "", redirect: null };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -18,12 +19,15 @@ class RegistrationForm extends Component {
     } else {
       this.setState({ badLogin: false, goodLogin: true, errorMsg: "" });
       localStorage.setItem(username, pswd1);
-      window.location.href = "/";
       localStorage.setItem("activeUser", username);
+      this.setState({ redirect: "/" });
     }
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="mb-3 mt-3">

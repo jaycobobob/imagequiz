@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class LoginForm extends Component {
-  state = { badLogin: false, goodLogin: false };
+  state = { badLogin: false, goodLogin: false, redirect: null };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -15,11 +16,14 @@ class LoginForm extends Component {
     } else {
       this.setState({ goodLogin: true, badLogin: false });
       localStorage.setItem("activeUser", username);
-      window.location.href = "/";
+      this.setState({ redirect: "/" });
     }
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="mb-3 mt-3">

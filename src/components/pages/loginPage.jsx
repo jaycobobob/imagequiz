@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "../loginForm";
 import Navbar from "../navbar";
+import { Link } from "react-router-dom";
 
 class LoginPage extends Component {
   state = {};
@@ -10,9 +11,9 @@ class LoginPage extends Component {
       <div>
         <Navbar />
         <div className="container-sm p-5">
-          <h2>Sign in here</h2>
+          <h2>Sign in here:</h2>
           <LoginForm />
-          <a href="/register">Don't have an account? Create one here.</a>
+          <Link to="/register">Don't have an account? Create one here.</Link>
         </div>
       </div>
     );
