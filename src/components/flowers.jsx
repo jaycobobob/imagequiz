@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import flowers from "./data";
+import { Link } from "react-router-dom";
+import { flowers } from "./data";
 
 class Flowers extends Component {
   state = {};
@@ -34,7 +35,9 @@ class Flower extends Component {
   render() {
     return (
       <div className="d-flex flex-column m-3 text-center">
-        <img id={this.props.name} src={this.props.picture}></img>
+        <Link to={`/${this.props.name}`}>
+          <img id={this.props.name} src={this.props.picture}></img>
+        </Link>
         <label htmlFor={this.props.name}>{this.props.name}</label>
       </div>
     );

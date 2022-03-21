@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import LoginPage from "./pages/loginPage";
 import RegistrationPage from "./pages/registrationPage";
+import QuizPage from "./pages/quizPage";
 
 class App extends Component {
   state = {};
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/register">
             <RegistrationPage />
           </Route>
+          <Route exact path="/:flowerName" component={QuizPage} />
         </Switch>
       </Router>
     );
